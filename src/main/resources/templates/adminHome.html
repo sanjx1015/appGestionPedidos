@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix360 | Admin</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar container">
+            <a class="brand" th:href="@{/}">
+                <img th:src="@{/images/AutoFixLOGO.jpeg}" alt="Logo AutoFix360">
+                <span>AutoFix<span class="brand-accent">360</span></span>
+            </a>
+            <div class="nav-links">
+                <a class="nav-link" th:href="@{/productos}">Catálogo</a>
+                <a class="nav-link" th:href="@{/logout}">Cerrar sesión</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container page-main">
+
+        <section class="dashboard-welcome">
+            <div>
+                <span class="eyebrow">Panel de control</span>
+                <h1>Bienvenido<span th:text="${user.name}">Nombre</span>!</h1>
+                <p>Administrará el catalogo, usuarios y los pedidos</p>
+            </div>
+            <div class="role-chip">
+                <span class="status-dot"></span>
+                <span th:text="${user.rol}">Rol</span>
+            </div>
+        </section>
+
+        <h2 class="section-title">Accesos rápidos</h2>
+
+        <section class="action-grid">
+            <a class="action-card" th:href="@{/productos/nuevo}">
+                <span class="action-icon">+</span>
+                <h3>Registrar producto</h3>
+                <p>Agregá un filtro más al catalogo</p>
+                <span class="card-arrow">-></span>
+            </a>
+
+            <a class="action-card" th:href="@{/usuarios/nuevo}">
+                <span class="action-icon">+</span>
+                <h3>Crear usuario</h3>
+                <p>Registra un empleado nuevo</p>
+                <span class="card-arrow">-></span>
+            </a>
+
+            <a class="action-card" th:href="@{/productos}">
+                <span class="action-icon">+</span>
+                <h3>Ver catalogo</h3>
+                <p>Consulta todos nuestros productos</p>
+                <span class="card-arrow">-></span>
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">AutoFix360 - Sistema de gestión</div>
+    </footer>
+
+</body>
+</html>

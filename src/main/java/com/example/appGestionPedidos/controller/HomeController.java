@@ -14,8 +14,8 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping ("/userhome")
-    public String userHome(HttpSession session, Model model){
+    @GetMapping ("/adminhome")
+    public String adminHome(HttpSession session, Model model){
         Object enSesion = session.getAttribute("user");
 
         if (enSesion == null){
@@ -23,7 +23,19 @@ public class HomeController {
         }
         User usuario = (User) enSesion;
         model.addAttribute("user", usuario);
-        return "userhome";
+        return "adminHome";
         }
+
+
+    @GetMapping ("/regularhome")
+    public String regularHome(HttpSession session, Model model){
+        Object enSesion = session.getAttribute("user");
+        if (enSesion == null){
+            return "redirect:/login";
+        }
+        User usuario = (User) enSesion;
+        model.addAttribute("user", usuario);
+        return "regularHome";
+    }
 
 }

@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix360 | Productos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Producto</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-        </tr>
-
-        <tr th:each="p: ${productos}">
-            <td th:text="${p.nombre}">.</td>
-            <td th:text="${p.descripcion}">.</td>
-            <td th:text="${p.precio}">.</td>
-        </tr>
-    </table>
-
+<header class="site-header">
+    <nav class="navbar container">
+        <a class="brand" th:href="@{/}"><img th:src="@{/images/AutoFixLOGO.jpeg}" alt="Logo AutoFix360"><span>AutoFix<span class="brand-accent">360</span></span></a>
+        <div class="nav-links"><a class="nav-link" th:href="@{/userhome}">Inicio</a></div>
+    </nav>
+</header>
+<main class="container page-main">
+    <div class="page-heading heading-row">
+        <div><span class="eyebrow">CATÁLOGO</span><h1>Productos</h1><p>Consulta los productos registrados en el sistema.</p></div>
+        <a class="button button-primary" th:href="@{/productos/nuevo}">+ Registrar producto</a>
+    </div>
+    <section class="table-card">
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead><tr><th>Producto</th><th>Descripción</th><th>Precio</th></tr></thead>
+                <tbody>
+                <tr th:each="p : ${productos}">
+                    <td class="product-name" th:text="${p.nombre}">Nombre</td>
+                    <td th:text="${p.descripcion}">Descripción</td>
+                    <td class="price-cell">₡ <span th:text="${#numbers.formatDecimal(p.precio, 1, 'COMMA', 2, 'POINT')}">0.00</span></td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(productos)}"><td colspan="3" class="empty-state">Todavía no hay productos registrados.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <a class="text-link back-link" th:href="@{/}">← Volver al inicio</a>
+</main>
+<footer class="site-footer"><div class="container">AutoFix360 · Sistema de gestión</div></footer>
 </body>
 </html>

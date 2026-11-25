@@ -1,31 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Usuario Nuevo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix360 | Registrar usuario</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-    <h1>Registro Usuario</h1>
-    <form th:action="@{/usuarios/nuevo}" method="post">
-        <p th:if="${error}" th:text="${error}"></p>
-        <div>
-            <label for="username">Usuario</label>
-            <input type="text" id="username" name="username" placeholder="id" required>
-        </div>
-
-        <div>
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Nombre" required>
-        </div>
-
-        <div>
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name= "password" placeholder="Password" required>
-        </div>
-
-        <div>
-            <button type="submit">Registrar</button>
-        </div>
-    </form>
+<header class="site-header">
+    <nav class="navbar container">
+        <a class="brand" th:href="@{/}"><img th:src="@{/images/AutoFixLOGO.jpeg}" alt="Logo AutoFix360"><span>AutoFix<span class="brand-accent">360</span></span></a>
+        <div class="nav-links"><a class="nav-link" th:href="@{/}">Inicio</a><a class="nav-link" th:href="@{/usuarios/nuevo}">Usuarios</a></div>
+    </nav>
+</header>
+<main class="container page-main">
+    <div class="page-heading">
+        <span class="eyebrow">ADMINISTRACIÓN</span>
+        <h1>Registrar usuario</h1>
+        <p>Ingresa los datos de la nueva cuenta.</p>
+    </div>
+    <section class="form-card">
+        <p class="alert alert-error" th:if="${error}" th:text="${error}"></p>
+        <form th:action="@{/usuarios/nuevo}" method="post" class="data-form">
+            <div class="form-field">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Nombre de usuario" autocomplete="username" required>
+            </div>
+            <div class="form-field">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" placeholder="Nombre y apellidos" required>
+            </div>
+            <div class="form-field">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" autocomplete="new-password" required>
+            </div>
+            <div class="form-actions">
+                <a class="button button-secondary" th:href="@{/}">Cancelar</a>
+                <button class="button button-primary" type="submit">Registrar usuario</button>
+            </div>
+        </form>
+    </section>
+</main>
+<footer class="site-footer"><div class="container">AutoFix360 · Sistema de gestión</div></footer>
 </body>
 </html>

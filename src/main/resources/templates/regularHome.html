@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix360 | Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar container">
+        <a class="brand" th:href="@{/}"><img th:src="@{/images/AutoFixLOGO.jpeg}" alt="Logo AutoFix360"><span>AutoFix<span class="brand-accent">360</span></span></a>
+        <div class="nav-links"><a class="nav-link" th:href="@{/}">Inicio</a><a class="nav-link" th:href="@{/logout}">Cerrar sesión</a></div>
+    </nav>
+</header>
+
+
+<main class="container page-main">
+    <section class="dashboard-welcome">
+        <div>
+            <span class="eyebrow">Mi Pnael</span>
+            <h1>¡Hola, <span th:text="${user.name}">Nombre</span>!</h1>
+            <p>Registrar pedidos de clientes</p>
+        </div>
+
+        <div class="role-chip"><span class="status-dot"></span><span th:text="${user.rol}">Rol</span></div>
+    </section>
+
+
+    <h2 class="section-title">Accesos rápidos</h2>
+    <section class="action-grid">
+        <a class="action-card" th:href="@{/productos}">
+            <span class="action-icon">＋</span>
+            <h3>Ver catálogo</h3>
+            <p>Comnsultas nuestros productos.</p>
+            <span class="card-arrow">→</span>
+        </a>
+    </section>
+
+</main>
+<footer class="site-footer"><div class="container">AutoFix360 · Sistema de gestión</div></footer>
+</body>
+</html>

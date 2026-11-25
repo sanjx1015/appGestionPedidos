@@ -66,7 +66,7 @@ public class ProductoController {
         Object enSesion = session.getAttribute("user");
         if(enSesion == null) return "redirect:/login";
         User actual = (User) enSesion;
-        if(actual.getRol() != User.Rol.ADMIN)return "redirect:/userhome";
+        if(actual.getRol() != User.Rol.ADMIN) return "redirect:/adminhome";
         return null;
     }
 }

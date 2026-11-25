@@ -29,16 +29,27 @@ public class LogController {
 
     // Model es la bolsa donde dejamos datos para que la plantilla los lea
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username, HttpSession session, Model model){
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password,
+                        HttpSession session, Model model){
 
         Optional<User> encontrado = userService.findByUsername(username);
 
-        if (encontrado.isEmpty()){
-            model.addAttribute("error","not found");
-            return "login" ;
+        if (encontrado.isEmpty() || !encontrado.get().getPassword().equals(password)) {
+            model.addAttribute("error","Usuario no incorrecto");
+            return "login";
         }
-        session.setAttribute("user", encontrado.get());
-        return "redirect:/userhome";
+
+        User usuario = encontrado.get();
+        session.setAttribute("user", usuario);
+
+        if (usuario.getRol()== User.Rol.ADMIN){
+            return "redirect:/adminhome" ;
+        }
+        else if(usuario.getRol()==User.Rol.REGULAR){
+            return "redirect:/regularhome" ;
+        };
+
+        return "redirect:/login";
     }
 
 

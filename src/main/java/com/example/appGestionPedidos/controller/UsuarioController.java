@@ -47,7 +47,7 @@ public class UsuarioController {
             model.addAttribute("error", "Este usuario ya existe");
             return "nuevoUsuario";
         }
-        return "redirect:/userhome";
+        return "redirect:/adminhome";
     }
 
     private String verificarAdmin(HttpSession session){
@@ -55,7 +55,7 @@ public class UsuarioController {
         if (enSesion == null) return "redirect:/login";
         User actual = (User) enSesion;
 
-        if (actual.getRol() != User.Rol.ADMIN) return "redirect:/userhome";
+        if (actual.getRol() != User.Rol.ADMIN) return "redirect:/regularhome";
         return null;
 
     }

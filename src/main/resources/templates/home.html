@@ -1,40 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Pedidos AutoFix</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix360 | Inicio</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
-
-
 <body>
-    <!-- NAVBAR -->
-    <header>
-        <nav class="nav">
-            <div class="left">
-                <a th:href="@{/}">AutoFix</a>
-            </div>
-
-            <div class="right">
-                <a th:href="@{/login}">Long In</a>
-            </div>
-        </nav>
-    </header>
-
-    <aside class="sidebar">
-        <!-- Left Column -->
-        <div class="left">
-            <a th:href="@{/}"><img th:src="@{/images/AutoFixLOGO.jpeg}" alt="AutoFix" width="200" height="200"></a>
+<header class="site-header">
+    <nav class="navbar container">
+        <a class="brand" th:href="@{/}">
+            <img th:src="@{/images/AutoFixLOGO.jpeg}" alt="Logo AutoFix360">
+            <span>AutoFix<span class="brand-accent">360</span></span>
+        </a>
+        <div class="nav-links">
+            <a class="button button-primary button-small" th:href="@{/login}">Iniciar sesión</a>
         </div>
+    </nav>
+</header>
 
-        <!-- Right Column-->
-        <div class="right">
-            <h1>La mejor calidad en filtros</h1>
-
+<main class="container">
+    <section class="hero">
+        <div class="hero-copy">
+            <span class="eyebrow">AUTOFiX360 · GESTIÓN DE PEDIDOS</span>
+            <h1>La mejor calidad<br>en filtros para tu vehículo.</h1>
+            <p>Encuentra y gestiona productos de calidad con una experiencia sencilla y confiable.</p>
+            <a class="button button-primary" th:href="@{/login}">Ingresar al sistema <span aria-hidden="true">→</span></a>
         </div>
-
-    </aside>
-
-
+        <div class="hero-logo">
+            <img th:src="@{/images/AutoFixLOGO.jpeg}" alt="AutoFix360">
+        </div>
+    </section>
+    <section class="intro-strip">
+        <div class="intro-icon">✓</div>
+        <div>
+            <h2>Bienvenido a AutoFix360</h2>
+            <p>Soluciones para la administración de productos y pedidos.</p>
+        </div>
+    </section>
+</main>
+<footer class="site-footer"><div class="container">AutoFix360 · Sistema de gestión</div></footer>
 </body>
 </html>
